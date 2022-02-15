@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <template id="report_student_detail">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+
+                <div class="page">
+                    <table>
+                        <p style="text-align:center;">
+                            <strong>ID CARD</strong>
+                        </p>
+                        <tr>
+                            <td>
+                                <p>
+                                    <img t-att-src="'data:image/png;base64,%s' % to_text(docs.student_image)"
+                                         width="120" height="130" style="position:absolute; left:70px"/>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr style="position:absolute; top:220px">
+                            <td>
+                                <p style="text-align:left;">
+                                    <strong>Name:</strong>
+                                </p>
+                                <p style="text-align:left;">
+                                    <strong>Standard:</strong>
+                                </p>
+                                <p style="text-align:right;">
+                                    <strong>Admission Date:</strong>
+                                </p>
+                            </td>
+                            <td>
+                                <p style="text-align:left;padding-left:10px;" t-field="o.name"/>
+                                <p style="text-align:left;padding-left:10px;" t-field="o.standard"/>
+                                <p style="text-align:left;padding-left:10px;" t-field="o.admission_date"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </t>
+        </t>
+    </template>
+
+</odoo>

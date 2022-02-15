@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+        <record id="school_tag_tree_view" model="ir.ui.view">
+            <field name="name">School Tag View</field>
+            <field name="model">school.tags</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="school_tag_form_view" model="ir.ui.view">
+            <field name="name">School Tag View</field>
+            <field name="model">school.tags</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="school_tag_action" model="ir.actions.act_window">
+            <field name="name">School Type Details</field>
+            <field name="res_model">school.tags</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+
+
+
+
+

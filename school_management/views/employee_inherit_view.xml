@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="employe_form_view_extend" model="ir.ui.view">
+        <field name="name">Employee Extended Tree</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <field name="name" position="before">
+                    <field name="id" invisible="1"/>
+                </field>
+            </data>
+        </field>
+    </record>
+
+    <record id="employe_tree_view_extend" model="ir.ui.view">
+        <field name="name">Employee Extended Tree</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <data>
+                <field name="name" position="before">
+                    <field name="id" invisible="1"/>
+                </field>
+            </data>
+        </field>
+    </record>
+
+    <record id="employe_kanban_view_extend" model="ir.ui.view">
+        <field name="name">Employee Extended Kanban</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+            <data>
+                <field name="name" position="before">
+                    <field name="id" invisible="1"/>
+                </field>
+            </data>
+        </field>
+    </record>
+
+    <record id="employee_inherit_view_action" model="ir.actions.act_window">
+        <field name="name">Employee Inherited Details</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+</odoo>

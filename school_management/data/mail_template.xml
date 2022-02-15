@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record id="student_detail_email_template" model="mail.template">
+            <field name="name">Student Detail: Send by email</field>
+            <field name="model_id" ref="school_management.model_student_management"/>
+            <field name="email_from">test@gmail.com</field>
+            <field name="email_to">{{ object.email }}</field>
+            <field name="subject">test</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear {{ object.name }}
+                        <br/>
+                        <br/>
+                        Here is your school details with reference {{ object.admission_date }}
+
+                        <br/>
+                        <br/>
+                        Do not hesitate to contact us if you have any questions.
+                        <br></br>
+                    </p>
+                </div>
+            </field>
+            <field name="report_template" ref="report_student_details"/>
+            <field name="report_name">Student Report {{ object.name }}</field>
+            <field name="auto_delete" eval="False"/>
+        </record>
+
+        <record id="purchase_order_mail_template" model="mail.template">
+            <field name="name">Purchase Order: RFQ</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="subject">{{ object.company_id.name }} Order (Ref {{ object.name or 'n/a' }})</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear
+                        <t t-out="object.partner_id.name or ''">Brandon Freeman</t>
+                        <br/>
+                        <br/>
+                        Here is in attachment a request for quotation
+                        <t t-out="object.name"/>
+                        from
+                        <t t-out="object.company_id.name"/>
+
+                        <br/>
+                        <br/>
+                        Do not hesitate to contact us if you have any questions.
+                        <br></br>
+                    </p>
+                </div>
+            </field>
+            <field name="report_template" ref="purchase.report_purchase_quotation"/>
+            <field name="report_name">RFQ {{ object.name }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="subject_list_tree_view" model="ir.ui.view">
+        <field name="name">Subject List</field>
+        <field name="model">subject.list</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="subject_list_form_view" model="ir.ui.view">
+        <field name="name">Subject List</field>
+        <field name="model">subject.list</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--    <record id="student_property_view_kanban" model="ir.ui.view">-->
+<!--        <field name="name">Student Kanban View</field>-->
+<!--        <field name="model">student.management</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <kanban>-->
+<!--                <field name="id"/>-->
+<!--                <field name="name"/>-->
+<!--                <field name="admission_date"/>-->
+<!--                <field name="roll_no"/>-->
+<!--                <templates>-->
+<!--                    <t t-name="kanban-box">-->
+<!--                        <div t-attf-class="oe_kanban_global_click">-->
+<!--                            <div class="o_kanban_image">-->
+<!--                                <img alt="Avatar"-->
+<!--                                     t-att-src="kanban_image('student.management', 'student_image', record.id.raw_value)"/>-->
+<!--                            </div>-->
+<!--                            <div class="oe_kanban_details">-->
+<!--                                <t class="o_kanban_record_title">-->
+<!--                                    <strong t-esc="record.name.value"/>-->
+<!--                                </t>-->
+<!--                                <div t-if="record.admission_date.value">-->
+<!--                                    <p>-->
+<!--                                        <strong>Admission Date:</strong>-->
+<!--                                        <t t-esc="record.admission_date.value"/>-->
+<!--                                    </p>-->
+<!--                                </div>-->
+<!--                                <div t-if="record.roll_no.value">-->
+<!--                                    <p>-->
+<!--                                        <strong>Roll No:</strong>-->
+<!--                                        <t t-esc="record.roll_no.value"/>-->
+<!--                                    </p>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                </templates>-->
+<!--            </kanban>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="subject_list_action" model="ir.actions.act_window">
+        <field name="name">Subject List</field>
+        <field name="res_model">subject.list</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

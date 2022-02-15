@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record id="school_management_tree_view" model="ir.ui.view">
+            <field name="name">School Tree View</field>
+            <field name="model">school.management</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="school_image" widget="image" width="50px"/>
+                    <field name="win_percentage"/>
+                    <field name="win_percentage"/>
+                    <field name="rank"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="school_management_form_view" model="ir.ui.view">
+            <field name="name">School Form View</field>
+            <field name="model">school.management</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight" states="new"
+                                confirm="Are you sure to confirm these datas?"/>
+                        <button string="Confirmed" class="oe_highlight" states="confirmed"/>
+                        <button name="action_cancel" string="Cancel" type="object" class="oe_highlight"
+                                states="confirmed" confirm="Are you sure want to Cancel?"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <field name="school_image" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <field name="tag_ids" widget="many2many_tags"/>
+                        <group>
+                            <group>
+                                <span class="o_form_label o_td_label" name="address_name">
+                                    <b>Address</b>
+                                </span>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="Street..." class="o_address_street"/>
+                                    <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                    <field name="city" placeholder="City" class="o_address_city"/>
+                                    <field name="state_id" class="o_address_state" placeholder="State"/>
+                                    <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                    <field name="country_id" placeholder="Country" class="o_address_country"/>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="win_percentage"/>
+                                <field name="rank"/>
+                            </group>
+                            <notebook>
+                                <page string="Students">
+                                    <group>
+                                        <field name="students_ids"/>
+                                    </group>
+                                </page>
+                                <page string="Teachers">
+                                    <group>
+                                        <field name="teacher_ids"/>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="school_management_search_view" model="ir.ui.view">
+            <field name="model">school.management</field>
+            <field name="arch" type="xml">
+                <search string="Scheduled Actions">
+                    <field name="name"/>
+                    <field name="zip"/>
+                    <field name="win_percentage"/>
+                    <field name="rank"/>
+                    <separator/>
+                    <group>
+                        <filter string="Rank" name="rank" context="{'group_by':'rank'} "/>
+                        <filter string="Zip Code" name="zip" context="{'group_by':'zip'} "/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="school_property_view_kanban" model="ir.ui.view">
+            <field name="name">School Kanban View</field>
+            <field name="model">school.management</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="rank"/>
+                    <field name="description"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img alt="Avatar"
+                                         t-att-src="kanban_image('school.management', 'school_image', record.id.raw_value)"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <t class="o_kanban_record_title">
+                                        <strong t-esc="record.name.value"/>
+                                    </t>
+                                    <div t-if="record.rank.value">
+                                        <p>
+                                            <strong>Rank:</strong>
+                                            <t t-esc="record.rank.value"/>
+                                        </p>
+                                    </div>
+                                    <div t-if="record.description.value">
+                                        <p>
+                                            <strong>Description:</strong>
+                                            <t t-esc="record.description.value"/>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="school_management_action" model="ir.actions.act_window">
+            <field name="name">School Details</field>
+            <field name="res_model">school.management</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+    </data>
+
+</odoo>
+
+
+
+
+
+
+
+
+
+

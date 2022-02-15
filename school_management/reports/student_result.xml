@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <template id="report_student_result">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure">
+                        <div class="text-center">
+                            <h2>Student Result</h2>
+                        </div>
+                        <table>
+                            <tr width="100%">
+                                <td>Student Name</td>
+                                <td>:</td>
+                                <td>
+                                    <t t-if="form.get('student_id')">
+                                        <t t-esc="form['student_id'][1]"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Date From</td>
+                                <td>:</td>
+                                <td>
+                                    <t t-if="form.get('date_from')">
+                                        <t t-esc="form['date_from']"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Date To</td>
+                                <td>:</td>
+                                <td>
+                                    <t t-if="form.get('date_to')">
+                                        <t t-esc="form['date_to']"/>
+                                    </t>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table class="table table-bordered mt32">
+                            <thead>
+                                <tr>
+                                    <th name="th_subject_id" class="text-left" width="50%">
+                                        <span>Subject</span>
+                                    </th>
+                                    <th name="th_mark" class="text-left" width="50%">
+                                        <span>Mark</span>
+                                    </th>
+                                </tr>
+                            </thead>
+<!--                            <t t-esc="docs">-->
+                                <t t-foreach="docs" t-as="line">
+                                    <tr>
+                                        <td style="text-align:left;">
+<!--                                            <span t-esc="o['subject_id'][1]"/>-->
+                                            <span t-esc="line.subject_id.name"/>
+                                        </td>
+                                        <td style="text-align:left;">
+<!--                                            <t t-esc="o['mark']"/>-->
+                                            <span t-esc="line.mark"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                        </table>
+                    </div>
+                </div>
+
+            </t>
+        </t>
+    </template>
+
+</odoo>

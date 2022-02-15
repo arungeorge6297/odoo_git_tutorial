@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="purchase_info_tree_view" model="ir.ui.view">
+        <field name="name">Purchase Information</field>
+        <field name="model">purchase.info</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="po_number"/>
+                <field name="vendor_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="inherit_sale_order" model="ir.ui.view">
+        <field name="name">Inherit Sale order</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook" position="inside">
+                <page name="purchase_info_tab" string="Purchase Info">
+                        <field name="purchase_info"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_school,access_school,model_school_management,,1,1,1,1
+access_student,access_student,model_student_management,,1,1,1,1
+access_teacher,access_teacher,model_teacher_management,,1,1,1,1
+access_tags,access_tags,model_school_tags,,1,1,1,1
+access_result,access_result,model_student_result,,1,1,1,1
+access_subject,access_subject,model_subject_list,,1,1,1,1
+access_popup,access_popup,model_popup_window,,1,1,1,1
+access_purchase,access_purchase,model_purchase_info,,1,1,1,1
+
+
+

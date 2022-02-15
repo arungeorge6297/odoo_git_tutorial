@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="purchase_sent_mail" model="ir.ui.view">
+        <field name="name">Purchase SentMail</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/header" position="inside">
+                <button name="action_sent_mail" string="Send Mail" states="draft" type="object"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

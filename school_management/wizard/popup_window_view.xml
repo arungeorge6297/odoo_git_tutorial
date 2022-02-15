@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="student_popup_view_form" model="ir.ui.view">
+        <field name="name">Popup Form</field>
+        <field name="model">popup.window</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="student_id" string="Student Name"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <footer>
+                    <button name="action_sent_mail" string="Print Report" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="student_popup_action" model="ir.actions.act_window">
+        <field name="name">Student Details</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">popup.window</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="student_popup_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+<!--    <menuitem id="print_student_details" name="Print Details" parent="school_management.school_second_level_menu" sequence="11" action="student_popup_action"/>-->
+</odoo>
+
+
+

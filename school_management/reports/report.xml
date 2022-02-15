@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <report
+        id= "report_student_details"
+        model = "student.management"
+        string = "Student Details"
+        name = "school_management.report_student_detail"
+        file = "school_management.report_student_detail"
+        report_type = "qweb-pdf"
+        paperformat = "school_management.paperformat_custom"
+    />
+
+     <record id="report_student_results" model="ir.actions.report">
+            <field name="name">Student Result</field>
+            <field name="model">popup.window</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">school_management.report_student_result</field>
+            <field name="report_file">school_management.report_student_result</field>
+            <field name="binding_model_id" ref="model_popup_window"/>
+            <field name="binding_type">report</field>
+        </record>
+</odoo>

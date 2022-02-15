@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <menuitem id="school_menu_root" name="School Management">
+        <menuitem id="school_first_level_menu" name="School">
+            <menuitem id="school_Detail_menu" name="School Details" action="school_management_action"/>
+            <menuitem id="tag_menu" name="School Types" action="school_tag_action"/>
+        </menuitem>
+        <menuitem id="school_second_level_menu" name="Student Details" >
+            <menuitem id="student_form_details" name="Show Deatils" action="student_management_action"/>
+        </menuitem>
+        <menuitem id="school_third_level_menu" name="Faculty Details">
+            <menuitem id="teacher_model_menu_action" name="Teaching Staff" action="teacher_management_action"/>
+            <menuitem id="subject_model_menu_action" name="Subject Lists" action="subject_list_action"/>
+        </menuitem>
+        <menuitem id="school_fourth_level_menu" name="Reporting">
+            <menuitem id="add_student_result_details" name="Add Results" action="student_result_action"/>
+            <menuitem id="print_student_result_details" name="Print Results" action="student_popup_action"/>
+        </menuitem>
+        <menuitem id="menu_employee_level" name="Employee" action="employee_inherit_view_action"/>
+    </menuitem>
+
+</odoo>

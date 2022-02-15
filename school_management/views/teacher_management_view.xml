@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="teacher_management_tree_view" model="ir.ui.view">
+        <field name="name">Teacher Tree View</field>
+        <field name="model">teacher.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="school_id"/>
+                <field name="teacher_image" widget="image" width="50px"/>
+                <field name="subject"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="teacher_management_form_view" model="ir.ui.view">
+        <field name="name">Teacher Form View</field>
+        <field name="model">teacher.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="teacher_image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <span class="o_form_label o_td_label" name="address_name">
+                                <b>Address</b>
+                            </span>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_id" class="o_address_state" placeholder="State"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                <field name="country_id" placeholder="Country" class="o_address_country"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="school_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <group>
+                                    <field name="teacher_age"/>
+                                    <field name="subject"/>
+                                    <field name="contact_number" options="{'format':0}"/>
+                                </group>
+                            </page>
+                            <page string="Other Info">
+                                <group>
+                                    <field name="gender"/>
+                                    <field name="bdate"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="teacher_employee_id" model="ir.sequence">
+        <field name="name">Employee ID Creation</field>
+        <field name="code">teacher.sequence</field>
+        <field name="prefix">0</field>
+        <field name="number_increment">1</field>
+        <field name="number_next">1</field>
+        <field name="padding">1</field>
+    </record>
+
+    <record id="teacher_property_view_kanban" model="ir.ui.view">
+        <field name="name">Teacher Kanban View</field>
+        <field name="model">teacher.management</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="subject"/>
+                <field name="employee_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img alt="Avatar"
+                                     t-att-src="kanban_image('teacher.management', 'teacher_image', record.id.raw_value)"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <t class="o_kanban_record_title">
+                                    <strong t-esc="record.name.value"/>
+                                </t>
+                                <div t-if="record.subject.value">
+                                    <p>
+                                        <strong>Subject:</strong>
+                                        <t t-esc="record.subject.value"/>
+                                    </p>
+                                </div>
+                                <div t-if="record.employee_id.value">
+                                    <p>
+                                        <strong>Employee Id:</strong>
+                                        <t t-esc="record.employee_id.value"/>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="teacher_management_action" model="ir.actions.act_window">
+        <field name="name">Teacher Details</field>
+        <field name="res_model">teacher.management</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+</odoo>
